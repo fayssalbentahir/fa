@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        tr {
+            border: 2px solid black;
+        }
+
+        td {
+            padding-right: 100%;
+        }
+    </style>
+</head>
+<script>
+    function add() {
+        const vp = 4.83;
+        let Np = document.getElementById('np1').value;
+        if (isNaN(Np)) {
+            document.getElementById('msg').innerHTML = "Erreue";
+        }
+        let SB = Number(Np) * Number(vp);
+        let Pr = Number(SB) * 0.13;
+        let Rr = Number(Np) * 0.06;
+        let Rm = Number(Np) * 0.025;
+        document.getElementById('np3').innerHTML = SB;
+        document.getElementById('np4').innerHTML = Pr;
+        document.getElementById('np5').innerHTML = Rr;
+        document.getElementById('np6').innerHTML = Rm;
+
+        let st = Number(Np) * 12;
+        let f = "exonere";
+        let a = Number(st) * 0.12;
+        let b = Number(st) * 0.24;
+        let c = Number(st) * 0.34;
+        let d = Number(st) * 0.38;
+        let e = Number(st) * 0.40;
+        if (st <= 28.000) {
+            document.getElementById('np7').innerHTML = f;
+        }
+        else
+
+            if (28.001 < st < 40.000) {
+                document.getElementById('np7').innerHTML = a;
+            }
+            else
+                if (40.001 < st < 50.000) {
+                    document.getElementById('np7').innerHTML = b;
+                }
+                else
+                    if (50.001 < st < 60.000) {
+                        document.getElementById('np7').innerHTML = c;
+                    }
+                    else
+                        if (60.001 < st < 15.000) {
+                            document.getElementById('np7').innerHTML = d;
+                        }
+                        else
+                            if (st >= 15.001) {
+                                document.getElementById('np7').innerHTML = e;
+                            }
+        let R = Number(Rm) + Number(Rr);
+        let NET = Number(SB) + Number(Pr);
+        document.getElementById('np8').innerHTML = NET;
+
+    }
+</script>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <th style="width:auto ; padding: auto;border:auto;">Simulateur our le calcule de salaire net</th>
+            </tr>
+            <tr>
+                <th for="Np">Nombe de points : </th>
+                <th><input type="text" id="np1"> </th>
+                <th id="msg" style="width: 180px;"> ok </th>
+
+            </tr>
+
+            <tr>
+                <th for="Np">Salaire brut : </th>
+                <th>
+                    <p id="np3"> </p>
+                </th>
+                <th id="msg" style="width: 150px;"> </th>
+            </tr>
+            <tr>
+                <th for="Np">Prime de résidence 13% : </th>
+                <th>
+                    <p id="np4"> </p>
+                </th>
+                <th id="msg" style="width: 150px;"> </th>
+            </tr>
+            <tr>
+                <th for="Np">Retune de retaite de 6% : </th>
+                <th>
+                    <p id="np5"> </p>
+                </th>
+                <th id="msg" style="width: 150px;"> </th>
+            </tr>
+            <tr>
+                <th for="Np">Retune metuelle de 2,5% : </th>
+                <th>
+                    <p id="np6"> </p>
+                </th>
+                <th id="msg" style="width: 150px;"> </th>
+            </tr>
+            <tr>
+                <th for="Np">RetuneImpot sur le revenu(IR) : </th>
+                <th>
+                    <p id="np7"> </p>
+                </th>
+                <th id="msg" style="width: 100px;"> </th>
+            </tr>
+            <tr>
+                <th for="Np">Slaire NET : </th>
+                <th>
+                    <p id="np8"> </p>
+                </th>
+                <th id="msg" style="width: 100px;"> </th>
+            </tr>
+            <td><button type="button" onclick="add()">Calculer</button></td>
+        </table>
+    </form>
+</body>
+
+</html>
